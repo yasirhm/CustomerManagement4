@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="DataAccess.RealCustomer" table="realcustomer">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="customerNumber" type="java.lang.Integer">
+            <column name="CUSTOMER_NUMBER" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="fatherName" type="string">
+            <column name="FATHER_NAME" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="NationalId" type="string">
+            <column name="NATIONAL_ID" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="birthDate" type="string">
+            <column name="BIRTH_DATE" length="20" not-null="true" unique="true" />
+        </property>
+    </class>
+
+</hibernate-mapping>
