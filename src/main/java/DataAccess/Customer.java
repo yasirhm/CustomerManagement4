@@ -58,13 +58,14 @@ public class Customer implements Serializable {
                 logger.info( "Last Customer Number : "+message.getCustomerNumber());
             }
             transaction.commit();
+            return newCustomerNum;
         }catch (HibernateException e){
             if (transaction!=null) transaction.rollback();
             logger.error(e.getMessage());
+            return null;
         }finally {
             session.close();
         }
-        return newCustomerNum;
     }
 
     public static Integer insert(){
@@ -73,16 +74,36 @@ public class Customer implements Serializable {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try {
+            transaction = session.beginTransaction();
             session.save(customer);
         /* employeeID = (Integer) session.save(employee); NICE ; get the id!!! */
             logger.info("New Customer inserted.");
             transaction.commit();
+            return newCustomerNum;
         }catch (HibernateException e){
+            if (transaction!=null) transaction.rollback();
+            logger.error(e.getMessage());
+            return null;
+        }finally {
+            session.close();
+        }
+    }
+
+    public static void deleteCustomer(Integer CustomerNumber){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("DELETE FROM Customer customer WHERE customer.customerNumber=:CUSTOMER_NUMBER");
+            query.setParameter("CUSTOMER_NUMBER",  CustomerNumber);
+            int deleted = query.executeUpdate();
+            transaction.commit();
+            logger.info(deleted+": Customer "+CustomerNumber+" Deleted.");
+        }catch (HibernateException e) {
             if (transaction!=null) transaction.rollback();
             logger.error(e.getMessage());
         }finally {
             session.close();
         }
-        return newCustomerNum;
     }
 }

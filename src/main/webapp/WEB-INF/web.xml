@@ -24,6 +24,15 @@
   <url-pattern>/AddNewRealCustomer</url-pattern>
 </servlet-mapping>
 
+  <servlet>
+    <servlet-name>SearchRealCustomer</servlet-name>
+    <servlet-class>Presentation.SearchRealCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchRealCustomer</servlet-name>
+    <url-pattern>/searchReal</url-pattern>
+  </servlet-mapping>
+
 
 
 </web-app>
