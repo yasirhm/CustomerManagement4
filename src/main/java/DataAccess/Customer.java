@@ -89,7 +89,7 @@ public class Customer implements Serializable {
         }
     }
 
-    public static void deleteCustomer(Integer CustomerNumber){
+    public static boolean deleteCustomer(Integer CustomerNumber){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try{
@@ -99,9 +99,11 @@ public class Customer implements Serializable {
             int deleted = query.executeUpdate();
             transaction.commit();
             logger.info(deleted+": Customer "+CustomerNumber+" Deleted.");
+            return true;
         }catch (HibernateException e) {
             if (transaction!=null) transaction.rollback();
             logger.error(e.getMessage());
+            return false;
         }finally {
             session.close();
         }

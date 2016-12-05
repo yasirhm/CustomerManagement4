@@ -17,7 +17,7 @@
 
 <servlet>
   <servlet-name>NewRealCustomer</servlet-name>
-  <servlet-class>Presentation.AddNewRealCustomer</servlet-class>
+  <servlet-class>Presentation.RealCustomer.AddNewRealCustomer</servlet-class>
 </servlet>
 <servlet-mapping>
   <servlet-name>NewRealCustomer</servlet-name>
@@ -26,11 +26,29 @@
 
   <servlet>
     <servlet-name>SearchRealCustomer</servlet-name>
-    <servlet-class>Presentation.SearchRealCustomerPresentation</servlet-class>
+    <servlet-class>Presentation.RealCustomer.SearchRealCustomerPresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchRealCustomer</servlet-name>
     <url-pattern>/searchReal</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditRealCustomer</servlet-name>
+    <servlet-class>Presentation.RealCustomer.EditRealCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditRealCustomer</servlet-name>
+    <url-pattern>/editRealCustomer</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>DeleteRealCustomer</servlet-name>
+    <servlet-class>Presentation.RealCustomer.DeleteRealCustomerPresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteRealCustomer</servlet-name>
+    <url-pattern>/deleteRealCustomer</url-pattern>
   </servlet-mapping>
 
 

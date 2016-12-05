@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="DataAccess.LegalCustomer" table="legalcustomer">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="customerNumber" type="java.lang.Integer">
+            <column name="CUSTOMER_NUMBER" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="NAME" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="economicalCode" type="string">
+            <column name="ECONOMICAL_Code" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="registrationDate" type="string">
+            <column name="REGISTRATION_DATE" length="20" not-null="true" unique="true" />
+        </property>
+    </class>
+
+</hibernate-mapping>

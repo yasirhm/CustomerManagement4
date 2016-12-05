@@ -1,8 +1,10 @@
 package BusinessLogic;
 
+import DataAccess.Customer;
 import DataAccess.RealCustomerCRUD;
 import DataAccess.RealCustomer;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -16,7 +18,7 @@ public class BusinessLogic {
     //*****REAL DataAccessCustomer*******//
     public static RealCustomer addRealCustomerBiz(RealCustomer realCustomer) throws ConflictInDataException {
         try {
-            checkfullfilledInput(realCustomer);
+            checkFulFilledInput(realCustomer);
             checkNationalId(realCustomer.getNationalId());
             return RealCustomerCRUD.addRealCustomerDataAccess(realCustomer);
         }catch (ConflictInDataException exp){
@@ -40,7 +42,7 @@ public class BusinessLogic {
         else throw new ConflictInDataException("کد ملی باید 10 رقم باشد.");
     }
 
-    private static boolean checkfullfilledInput(RealCustomer realCustomer)throws ConflictInDataException {
+    private static boolean checkFulFilledInput(RealCustomer realCustomer)throws ConflictInDataException {
         if (realCustomer.getFirstName().equals("") || realCustomer.getLastName().equals("") || realCustomer.getFatherName().equals("") || realCustomer.getBirthDate().equals("") || realCustomer.getNationalId().equals("")) {
             throw new ConflictInDataException("اطلاعات ورودی کافی نیست.");
         }
@@ -51,5 +53,21 @@ public class BusinessLogic {
 
     public static List<RealCustomer> searchRealCustomerBiz(RealCustomer realCustomer){
         return RealCustomerCRUD.search(realCustomer);
+    }
+
+    public static RealCustomer getRealCustomerBiz(Integer id){
+     /*   RealCustomer realCustomer = new RealCustomer();
+        realCustomer.setCustomerNumber(parseInt(id));
+        List list = RealCustomerCRUD.search(realCustomer);
+        return (RealCustomer) list.get(0);*/
+        return RealCustomerCRUD.getRealCustomer(id);
+    }
+
+    public static void updateRealCustomerBiz(RealCustomer realCustomer) throws ConflictInDataException {
+        RealCustomerCRUD.updateRealCustomer(realCustomer);
+    }
+
+    public static boolean deleteRealCustomerBiz(Integer customerNumber){
+        return Customer.deleteCustomer(customerNumber);
     }
 }
