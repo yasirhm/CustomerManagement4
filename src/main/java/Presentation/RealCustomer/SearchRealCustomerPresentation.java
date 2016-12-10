@@ -2,6 +2,7 @@ package Presentation.RealCustomer;
 
 import BusinessLogic.BusinessLogic;
 import DataAccess.RealCustomer;
+import Presentation.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +48,7 @@ public class SearchRealCustomerPresentation extends HttpServlet {
             html = createHTMLString(realCustomers);
             if (realCustomers.size() == 0){
                 String body = "رکوردی با این مشخصات ثبت نشده است." ;
-                html=createHTMLString(body);
+                html= Util.createHTMLString(body);
             }else
                 html = createHTMLString(realCustomers);
         } catch (Exception e) {
@@ -111,29 +112,7 @@ public class SearchRealCustomerPresentation extends HttpServlet {
                 "</html>";
     }
 
-    public String createHTMLString(String body) {
-        return
-                "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" +" +
-                        "http://www.w3.org/TR/html4/loose.dtd\">\n" +
-                        "<html charset=UTF-8\" lang=\"fa\" dir=\"rtl\"> \n" +
-                        "<style type=\"text/css\">\n" +
-                        "    body {\n" +
-                        "        background-image:\n" +
-                        "                url('images/background.png');\n" +
-                        "}\n" +
-                        "</style>" +
-                        "<head> \n" +
-                        "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
-                        "<title>Edit Legal DataAccessCustomer</title> \n" +
-                        "</head> \n" +
-                        "<body align='center'>\n" +
-                        "<br><br><br><br> " +
-                        body+
-                        " <br><br>\n" +
-                        "<a type=\"text\" href=\"index.jsp\"> صفحه ی اول </a><br>\n"+
-                        "</body> \n" +
-                        "</html>";
-    }
+
 
     public String showExceptionMessage(String message){
         return

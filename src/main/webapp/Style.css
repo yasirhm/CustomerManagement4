@@ -24,3 +24,26 @@ body {
 #search input[type="text"]:focus {
     width: 200px;
 }
+
+div {
+    border-radius: 5px;
+    padding: 20px;
+}
+
+input[type=submit]:hover {
+    background-color: rgba(137, 155, 166, 0.55);
+}
+
+input[type=submit]{
+    border: 1px solid #d1d1d1;
+    -webkit-border-radius: 20px;
+    border-width: 3px;
+    border-style: ridge;
+    font: bold 13px Arial,Helvetica,Sans-serif;
+    width: 110px;
+    padding: 6px 15px 6px 10px;
+}
+
+:required:focus {
+    box-shadow: 0  0 3px rgba(255,0,0,0.5);
+}

@@ -1,45 +1,59 @@
 package DataAccess;
 
+import javax.persistence.*;
 import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Created by $Yasi on 12/4/2016.
  */
+@Entity
+@Table(name = "grantcondition") //, uniqueConstraints = @UniqueConstraint(columnNames = "NAME")
 public class GrantCondition implements Serializable {
-    public Integer id;
-    public Integer loanTypeID;
-    public String name;
-    public Integer minimumContractPeriod;
-    public Integer maximumContractPeriod;
-    public Double minimumContractAmount;
-    public Double maximumContractAmount;
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column( name = "GRANT_ID", unique = true )
+    public Integer GRANT_ID;
 
-    public GrantCondition(Integer loanTypeID, String name, Integer minimumContractPeriod, Integer maximumContractPeriod, Double minimumContractAmount, Double maximumContractAmount) {
-        this.loanTypeID = loanTypeID;
+    @Column(name = "LOAN_TYPE_ID")
+    public Integer LOAN_TYPE_ID;
+    @Column(name = "NAME")
+    public String name;
+    @Column(name = "MIN_PERIOD")
+    public Integer minContractPeriod;
+    @Column(name = "MAX_PERIOD")
+    public Integer maxContractPeriod;
+    @Column(name = "MIN_AMOUNT")
+    public Double minContractAmount;
+    @Column(name = "MAX_AMOUNT")
+    public Double maxContractAmount;
+
+    public GrantCondition( String name,Integer maximumContractPeriod, Integer minimumContractPeriod, Double maximumContractAmount, Double minimumContractAmount) {
         this.name = name;
-        this.minimumContractPeriod = minimumContractPeriod;
-        this.maximumContractPeriod = maximumContractPeriod;
-        this.minimumContractAmount = minimumContractAmount;
-        this.maximumContractAmount = maximumContractAmount;
+        this.minContractPeriod = minimumContractPeriod;
+        this.maxContractPeriod = maximumContractPeriod;
+        this.minContractAmount = minimumContractAmount;
+        this.maxContractAmount = maximumContractAmount;
     }
 
     public GrantCondition() {
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getGRANT_ID() {
+        return GRANT_ID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setGRANT_ID(Integer id) {
+        this.GRANT_ID = id;
     }
 
-    public Integer getLoanTypeID() {
-        return loanTypeID;
+    public Integer getLOAN_TYPE_ID() {
+        return LOAN_TYPE_ID;
     }
 
-    public void setLoanTypeID(Integer loanTypeID) {
-        this.loanTypeID = loanTypeID;
+    public void setLOAN_TYPE_ID(Integer loanTypeID) {
+        this.LOAN_TYPE_ID = loanTypeID;
     }
 
     public String getName() {
@@ -50,35 +64,35 @@ public class GrantCondition implements Serializable {
         this.name = name;
     }
 
-    public Integer getMinimumContractPeriod() {
-        return minimumContractPeriod;
+    public Integer getMinContractPeriod() {
+        return minContractPeriod;
     }
 
-    public void setMinimumContractPeriod(Integer minimumContractPeriod) {
-        this.minimumContractPeriod = minimumContractPeriod;
+    public void setMinContractPeriod(Integer minContractPeriod) {
+        this.minContractPeriod = minContractPeriod;
     }
 
-    public Integer getMaximumContractPeriod() {
-        return maximumContractPeriod;
+    public Integer getMaxContractPeriod() {
+        return maxContractPeriod;
     }
 
-    public void setMaximumContractPeriod(Integer maximumContractPeriod) {
-        this.maximumContractPeriod = maximumContractPeriod;
+    public void setMaxContractPeriod(Integer maxContractPeriod) {
+        this.maxContractPeriod = maxContractPeriod;
     }
 
-    public Double getMinimumContractAmount() {
-        return minimumContractAmount;
+    public Double getMinContractAmount() {
+        return minContractAmount;
     }
 
-    public void setMinimumContractAmount(Double minimumContractAmount) {
-        this.minimumContractAmount = minimumContractAmount;
+    public void setMinContractAmount(Double minContractAmount) {
+        this.minContractAmount = minContractAmount;
     }
 
-    public Double getMaximumContractAmount() {
-        return maximumContractAmount;
+    public Double getMaxContractAmount() {
+        return maxContractAmount;
     }
 
-    public void setMaximumContractAmount(Double maximumContractAmount) {
-        this.maximumContractAmount = maximumContractAmount;
+    public void setMaxContractAmount(Double maxContractAmount) {
+        this.maxContractAmount = maxContractAmount;
     }
 }

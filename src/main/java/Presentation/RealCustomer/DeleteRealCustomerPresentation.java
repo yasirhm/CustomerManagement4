@@ -45,7 +45,7 @@ public class DeleteRealCustomerPresentation extends HttpServlet {
                         "</style>" +
                         "<head> \n" +
                         "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
-                        "<title>Edit RealCustomer</title> \n" +
+                        "<title>Response</title> \n" +
                         "</head> \n" +
                         "<body align='center'>\n" +
                         " <br><br>\n" +

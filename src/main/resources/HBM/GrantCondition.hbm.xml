@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="DataAccess.GrantCondition" table="grantcondition">
+        <id name="GRANT_ID" type="java.lang.Integer">
+            <column name="GRANT_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="LOAN_TYPE_ID" type="java.lang.Integer">
+            <column name="LOAN_TYPE_ID" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="maxContractPeriod" type="java.lang.Integer">
+            <column name="MAX_PERIOD" not-null="true" />
+        </property>
+        <property name="minContractPeriod" type="java.lang.Integer">
+            <column name="MIN_PERIOD" not-null="true" />
+        </property>
+        <property name="maxContractAmount" type="java.lang.Double">
+            <column name="MAX_AMOUNT" not-null="true" />
+        </property>
+        <property name="minContractAmount" type="java.lang.Double">
+            <column name="MIN_AMOUNT" not-null="true" />
+        </property>
+
+    </class>
+
+</hibernate-mapping>

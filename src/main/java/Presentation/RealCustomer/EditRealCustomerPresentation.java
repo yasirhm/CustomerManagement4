@@ -3,6 +3,7 @@ package Presentation.RealCustomer;
 import BusinessLogic.BusinessLogic;
 import DataAccess.RealCustomer;
 import BusinessLogic.ConflictInDataException;
+import Presentation.Util;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class EditRealCustomerPresentation extends HttpServlet {
         RealCustomer realCustomer = BusinessLogic.getRealCustomerBiz(parseInt(customerNumber));
         //realCustomer.setCustomerNumber(parseInt(customerNumber));
         String body = createHTMLBodyEditPageString(realCustomer);
-        String html = createHTMLString(body);
+        String html = Util.createHTMLString(body);
         out.println(html);
     }
 
@@ -54,35 +55,12 @@ public class EditRealCustomerPresentation extends HttpServlet {
             //RealCustomer updated = BusinessLogic.updateRealCustomerBiz(realCustomer);
             BusinessLogic.updateRealCustomerBiz(realCustomer);
             String body = createHTMLBodyResultPageString(realCustomer);
-            html = createHTMLString(body);
+            html = Util.createHTMLString(body);
         }catch (ConflictInDataException exp){
             String body = exp.getMessage();
-            html = createHTMLString(body);
+            html = Util.createHTMLString(body);
         }
             out.println(html);
-    }
-
-    public String createHTMLString(String body) {
-        return
-                "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" +" +
-                        "http://www.w3.org/TR/html4/loose.dtd\">\n" +
-                        "<html charset=UTF-8\" lang=\"fa\" dir=\"rtl\"> \n" +
-                        "<style type=\"text/css\">\n" +
-                        "    body {\n" +
-                        "        background-image:\n" +
-                        "                url('images/background.png');\n" +
-                        "}\n" +
-                        "</style>" +
-                        "<head> \n" +
-                        "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n" +
-                        "<title>Edit RealCustomer</title> \n" +
-                        "</head> \n" +
-                        "<body>\n" +
-                        "<div align='center' >\n"+
-                        body+
-                        "</div>\n </body> \n" +
-                        "</html>";
-
     }
 
     public String createHTMLBodyEditPageString(RealCustomer realCustomer){
@@ -127,13 +105,13 @@ public class EditRealCustomerPresentation extends HttpServlet {
     public String createHTMLBodyResultPageString(RealCustomer realCustomer){
         return
                 "<br><br>\n" +
-                        "<table >\n"+
+                        "<table  BORDER='5' WIDTH='50%'>\n"+
                         "<tr >\n"+
-                        "<td > نام </td >\n"+
-                        "<td > نام خانوادگی</td >\n"+
-                        "<td > نام پدر</td >\n"+
-                        "<td > تاریخ تولد</td >\n"+
-                        "<td > کد ملی</td >\n"+
+                        "<td ><h5> نام </h5></td >\n"+
+                        "<td ><h5> نام خانوادگی </h5></td >\n"+
+                        "<td ><h5>  نام پدر</h5></td >\n"+
+                        "<td ><h5> تاریخ تولد</h5></td >\n"+
+                        "<td ><h5> کد ملی</h5></td >\n"+
                         "</tr >\n"+
                         "<tr >\n"+
                         "<td >\n"+
@@ -154,7 +132,6 @@ public class EditRealCustomerPresentation extends HttpServlet {
                         "</tr>\n"+
                         "</table >\n"+
                         "<br><br>" +
-                        "<a type=\"text\" href=\"index.jsp\"> صفحه ی اول </a><br>\n"
-                        ;
+                        "<a type=\"text\" href=\"index.jsp\"> صفحه ی اول </a><br>\n";
     }
 }

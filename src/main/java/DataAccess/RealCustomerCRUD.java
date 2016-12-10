@@ -102,13 +102,13 @@ public class RealCustomerCRUD {
         }
     }
 
-    public static RealCustomer getRealCustomer(Integer customerNumber){
+    public static RealCustomer getRealCustomer(Integer customerNumber) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
-        try{
+        try {
             transaction = session.beginTransaction();
             Query query = session.createQuery("FROM RealCustomer realCustomer WHERE realCustomer.customerNumber=:CUSTOMER_NUMBER");
-            query.setParameter("CUSTOMER_NUMBER",  customerNumber);
+            query.setParameter("CUSTOMER_NUMBER", customerNumber);
             List list = query.list();
             RealCustomer real = new RealCustomer();
             for (Iterator iter = list.iterator(); iter.hasNext(); ) {
@@ -116,11 +116,11 @@ public class RealCustomerCRUD {
             }
             transaction.commit();
             return real;
-        }catch (HibernateException e) {
-            if (transaction!=null) transaction.rollback();
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
             logger.error(e.getMessage());
             return null;
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -129,31 +129,31 @@ public class RealCustomerCRUD {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
-        try{
+        try {
             transaction = session.beginTransaction();
             /*Employee employee =
                     (Employee)session.get(Employee.class, EmployeeID);
             employee.setSalary( salary );*/
 
             Query query = session.createQuery("update RealCustomer realcustomer set realcustomer.firstName=:firstNme "
-                   + " ,realcustomer.lastName=:lastNme"
-                    +" ,realcustomer.fatherName=:father , realcustomer.birthDate=:birthDay"
-                    +" where realcustomer.customerNumber = :CUSTOMER_NUMBER");
+                    + " ,realcustomer.lastName=:lastNme"
+                    + " ,realcustomer.fatherName=:father , realcustomer.birthDate=:birthDay"
+                    + " where realcustomer.customerNumber = :CUSTOMER_NUMBER");
             query.setParameter("firstNme", realCustomer.getFirstName());
-            query.setParameter("lastNme",realCustomer.getLastName());
-            query.setParameter("father",realCustomer.getFatherName());
-            query.setParameter("birthDay",realCustomer.getBirthDate());
-            query.setParameter("CUSTOMER_NUMBER",  realCustomer.getCustomerNumber());
+            query.setParameter("lastNme", realCustomer.getLastName());
+            query.setParameter("father", realCustomer.getFatherName());
+            query.setParameter("birthDay", realCustomer.getBirthDate());
+            query.setParameter("CUSTOMER_NUMBER", realCustomer.getCustomerNumber());
             int rowsAffected = query.executeUpdate();
 
             if (rowsAffected > 0) {
                 logger.info("Updated ********" + rowsAffected + " rows.");
             }
             transaction.commit();
-        }catch (HibernateException e) {
-            if (transaction!=null) transaction.rollback();
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }

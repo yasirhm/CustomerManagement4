@@ -17,11 +17,11 @@
 <body>
 <div align="center" style="margin-top: 50px;">
     <br><br>
-    <a type="text" href="createNewRealCustomer.jsp"> ایجاد مشتری جدید </a><br>
-
+    <a type="text" href="createNewRealCustomer.jsp"> ایجاد مشتری جدید </a><br><br>
+    <a type="text" href="LoanTypeManager.jsp"> ایجاد تسهیلات جدید </a><br>
+    <br><br>
     <form method="get" action="/searchReal" id="search">
-        <br><br><br>
-        <label> جستجوی مشتری : </label><br><br>
+        <h4> جستجوی مشتری : </h4>
         <input name="firstName" type="text" size="40" placeholder="نام..." /><br><br>
         <input name="lastName" type="text" size="40" placeholder="نام خانوادگی..." /><br><br>
         <input name="NationalId" type="text" size="40" placeholder="کد ملی..." /><br><br>

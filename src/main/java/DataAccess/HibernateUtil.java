@@ -1,7 +1,7 @@
 package DataAccess;
 
 /**
- * Created by dotinschool6 on 11/23/2016.
+ * Created by Yasi on 11/23/2016.
  */
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

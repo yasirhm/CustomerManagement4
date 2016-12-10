@@ -5,8 +5,12 @@
          version="3.1">
 
   <display-name>Archetype Created Web Application</display-name>
+  <context-param>
+    <param-name>javax.faces.CONFIG_FILES</param-name>
+    <param-value>/HBM/LoanType.hbm.xml</param-value>
+  </context-param>
 
-<welcome-file-list>
+  <welcome-file-list>
   <welcome-file>index.html</welcome-file>
   <welcome-file>index.htm</welcome-file>
   <welcome-file>index.jsp</welcome-file>
@@ -51,6 +55,13 @@
     <url-pattern>/deleteRealCustomer</url-pattern>
   </servlet-mapping>
 
-
+  <servlet>
+    <servlet-name>AddLoanType</servlet-name>
+    <servlet-class>Presentation.Loan.CreateNewLoanTypePresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddLoanType</servlet-name>
+    <url-pattern>/AddNewLoanType</url-pattern>
+  </servlet-mapping>
 
 </web-app>
