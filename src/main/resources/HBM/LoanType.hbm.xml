@@ -15,8 +15,8 @@
         <property name="interestRate" type="java.lang.Double">
             <column name="INTEREST_RATE"  not-null="true"/>
         </property>
-        <set name="grantConditions" table="grantcondition"  inverse="true" lazy="true" fetch="select">
-            <key column="LOAN_TYPE_ID" not-null="true" on-delete="cascade" />
+        <set name="grantConditions" table="grantcondition"  cascade="all" inverse="true" lazy="true" fetch="select">
+            <key column="LOAN_TYPE_ID" not-null="true" on-delete="cascade"  />
             <!--<list-index column="GRANT_ID"/> -->
             <one-to-many class="DataAccess.GrantCondition" />
         </set>

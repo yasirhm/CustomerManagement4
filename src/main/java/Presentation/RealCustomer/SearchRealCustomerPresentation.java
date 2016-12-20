@@ -45,21 +45,19 @@ public class SearchRealCustomerPresentation extends HttpServlet {
         String html;
         try {
             realCustomers = BusinessLogic.searchRealCustomerBiz(realCustomer);
-            html = createHTMLString(realCustomers);
             if (realCustomers.size() == 0){
                 String body = "رکوردی با این مشخصات ثبت نشده است." ;
-                html= Util.createHTMLString(body);
+                response.getWriter().println( Util.createHTMLString(body));
             }else
-                html = createHTMLString(realCustomers);
+                response.getWriter().println(editHTMLPage(realCustomers));
         } catch (Exception e) {
             System.out.println("Erorr: " + e.getMessage());
-            html = e.getMessage();  //TO DO: Error Page
-            showExceptionMessage(html);
+            String error = "<p><h4>" + "\n  خطا : " + e.getMessage() + "</h4></p>";
+            response.getWriter().print(Presentation.Util.createHTMLString(error));
         }
-        out.println(html);
     }
 
-    public String createHTMLString(List<RealCustomer> realCustomers) {
+    public String editHTMLPage(List<RealCustomer> realCustomers) {
         StringBuilder table = new StringBuilder(" ");
         for (RealCustomer result : realCustomers) {
             String row = "<TR ALIGN='CENTER'onmouseover=\"this.style.backgroundColor='#ffff66';\" onmouseout=\"this.style.backgroundColor='#d4e3e5';\">\n" +
@@ -112,32 +110,4 @@ public class SearchRealCustomerPresentation extends HttpServlet {
                 "</html>";
     }
 
-
-
-    public String showExceptionMessage(String message){
-        return
-                "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" +" +
-                        "http://www.w3.org/TR/html4/loose.dtd\">\n" +
-                        "<html charset=UTF-8\" lang=\"fa\" dir=\"rtl\"> \n" +
-                        "<style type=\"text/css\">\n" +
-                        "    body {\n" +
-                        "        background-image:\n" +
-                        "                url('images/background.png')};\n"+
-                        "</style>"+
-                        "<head> \n" +
-                        "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"+
-                        "<title>DataAccessCustomer Manager</title> \n" +
-                        "</head> \n" +
-                        "<body> <div align='center'> \n" +
-                        "<style" +
-                        "\"font-size=\"12px\" color='black'\"" + "\">" +
-                        "<br><br><br><br> " +
-                        "خطا :  <br>"+
-                        "\t " + message + " <br> " +
-                        "</font> <br><br>\n" +
-                        "<a type=\"text\" href=\"index.jsp\"> صفحه ی اول </a><br>\n"+
-                        "</div>\n"+
-                        "</body> \n" +
-                        "</html>";
-    }
 }

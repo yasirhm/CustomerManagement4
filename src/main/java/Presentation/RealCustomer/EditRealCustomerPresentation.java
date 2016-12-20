@@ -23,44 +23,31 @@ public class EditRealCustomerPresentation extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-        //request.getAttribute("id");
         String customerNumber = request.getParameter("id");
         RealCustomer realCustomer = BusinessLogic.getRealCustomerBiz(parseInt(customerNumber));
-        //realCustomer.setCustomerNumber(parseInt(customerNumber));
-        String body = createHTMLBodyEditPageString(realCustomer);
-        String html = Util.createHTMLString(body);
-        out.println(html);
+        response.getWriter().println(Util.createHTMLString(createHTMLBodyEditPageString(realCustomer)));
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException,IOException{
-
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String fatherName = request.getParameter("fatherName");
         String birthDay = request.getParameter("birthDate").replaceAll("\\s+","");
         String customerNumber = request.getParameter("customerNumber").replaceAll("\\s+","");
         String nationalId = request.getParameter("NationalId").replaceAll("\\s+","");
-
-        RealCustomer realCustomer = new RealCustomer(firstName,lastName,fatherName,birthDay,nationalId);
-        realCustomer.setCustomerNumber(parseInt(customerNumber));
-
-        String html;
         try {
+            RealCustomer realCustomer = new RealCustomer(firstName,lastName,fatherName,birthDay,nationalId);
+            realCustomer.setCustomerNumber(parseInt(customerNumber));
             //RealCustomer updated = BusinessLogic.updateRealCustomerBiz(realCustomer);
             BusinessLogic.updateRealCustomerBiz(realCustomer);
-            String body = createHTMLBodyResultPageString(realCustomer);
-            html = Util.createHTMLString(body);
+            response.getWriter().println(Util.createHTMLString(createHTMLBodyResultPageString(realCustomer)));
         }catch (ConflictInDataException exp){
-            String body = exp.getMessage();
-            html = Util.createHTMLString(body);
+            String error = "<p><h4>" + "\n  خطا : " + exp.getMessage() + "</h4></p>";
+            response.getWriter().print(Presentation.Util.createHTMLString(error));
         }
-            out.println(html);
     }
 
     public String createHTMLBodyEditPageString(RealCustomer realCustomer){
@@ -98,7 +85,6 @@ public class EditRealCustomerPresentation extends HttpServlet {
                         "</tr>\n"+
                         "</table >\n"+
                         "<br><br>" +
-                        "<a type=\"text\" href=\"index.jsp\"> صفحه ی اول </a><br>\n" +
                         "</form >\n";
     }
 
@@ -131,7 +117,6 @@ public class EditRealCustomerPresentation extends HttpServlet {
                         "</td >\n"+
                         "</tr>\n"+
                         "</table >\n"+
-                        "<br><br>" +
-                        "<a type=\"text\" href=\"index.jsp\"> صفحه ی اول </a><br>\n";
+                        "<br><br>" ;
     }
 }

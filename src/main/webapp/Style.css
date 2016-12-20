@@ -25,6 +25,16 @@ body {
     width: 200px;
 }
 
+#newGrant {
+    border: 1px solid #d1d1d1;
+    -webkit-border-radius: 20px;
+    border-width: 3px;
+    border-style: ridge;
+    font: bold 13px Arial,Helvetica,Sans-serif;
+    width: 110px;
+    padding: 6px 15px 6px 10px;
+}
+
 div {
     border-radius: 5px;
     padding: 20px;
@@ -32,6 +42,29 @@ div {
 
 input[type=submit]:hover {
     background-color: rgba(137, 155, 166, 0.55);
+}
+#newGrant[type=submit] :hover{
+    background-color: rgba(137, 155, 166, 0.55);
+}
+
+#grants input[type="data"]{
+    background:no-repeat 10px 6px #fcfcfc;
+    border: 1px solid #d1d1d1;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #bebebe;
+    width: 150px;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
 }
 
 input[type=submit]{
@@ -44,6 +77,39 @@ input[type=submit]{
     padding: 6px 15px 6px 10px;
 }
 
+
 :required:focus {
     box-shadow: 0  0 3px rgba(255,0,0,0.5);
+}
+
+.fixed_headers {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-color: grey;
+    border: 5px;
+    width:initial;
+    cellpadding:4px;
+    cellspacing:3px;
+
+th { text-decoration: underline; }
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+thead {
+    background-color:#333;
+    color: #FDFDFD;
+tr {
+    display: block;
+    position: relative;
+}
+}
+tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+tr:nth-child(even) {
+    background-color: #DED;  }
+}
 }

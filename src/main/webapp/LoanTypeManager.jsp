@@ -19,7 +19,7 @@
     <div>
         <h4>اطلاعات نوع تسهیلات جدید را وارد بکنید:</h4>
     </div>
-
+    <p id="demo"></p>
     <form method="get" id="search" action="createGrantCondition.jsp">
         <label for="Lname">نام نوع تسهیلات</label>
         <input type="text" id="Lname" name="loanName" size="40" oninvalid="InvalidMsg(this);"required />
@@ -27,17 +27,8 @@
         <label for="interestRate">نرخ سود</label>
         <input type="text" id="interestRate" name="interestRate" size="40" style="margin-right:35px" oninvalid="InvalidMsg(this);"required/>
         <br><br>
-        <input type="submit" value="صفحه ی بعد"/>
-        <%--
-        action="createGrantCondition.jsp"
-          <label for="country">State</label>
-          <select id="country" name="country">
-              <option value="australia">Australia</option>
-              <option value="canada">Canada</option>
-              <option value="usa">USA</option>
-          </select>
-            <input type="submit" value="ایجاد">
-          --%>
+
+        <input type="submit"  value="صفحه ی بعد"/>
     </form>
 </div>
 

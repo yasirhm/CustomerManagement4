@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="DataAccess.LoanFile" table="loanfile">
+        <id name="loanFileID" type="java.lang.Integer">
+            <column name="LOAN_FILE_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="firstName" type="java.lang.String">
+            <column name="FIRST_NAME" not-null="true" length="250" />
+        </property>
+        <property name="lastName" type="java.lang.String">
+            <column name="LAST_NAME" not-null="true" length="250" />
+        </property>
+        <!--<property name="customerNumber" type="java.lang.Integer">
+            <column name="CUSTOMER_NUMBER" not-null="true" />
+        </property>-->
+        <many-to-one name="customerNumber" column="CUSTOMER_NUMBER" class="DataAccess.RealCustomer" cascade="all" not-null="true"/>
+        <!--<property name="loanTypeID" type="java.lang.Integer">
+            <column name="LOAN_TYPE_ID" not-null="true" />
+        </property>-->
+        <many-to-one name="loanTypeID" column="LOAN_TYPE_ID" class="DataAccess.LoanType" cascade="all" not-null="true"/>
+        <property name="period" type="java.lang.Integer">
+            <column name="CONTRACT_PERIOD" not-null="true" />
+        </property>
+        <property name="amount" type="java.lang.Integer">
+            <column name="CONTRACT_AMOUNT" not-null="true" />
+        </property>
+    </class>
+
+</hibernate-mapping>

@@ -23,9 +23,9 @@ public class Util {
                         "<div align='center' >\n"+
                         "<br><br><br><br>"+
                         body+
+                        "<a type=\"text\" href=\"index.jsp\"> صفحه ی اول </a><br>\n" +
                         "</div>\n </body> \n" +
                         "</html>";
 
     }
-
 }

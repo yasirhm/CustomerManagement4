@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by dotinschool6 on 11/23/2016.
+ * Created by $Yasi on 11/23/2016.
  */
 public class Customer implements Serializable {
     private static final long serialVersionUID = 1L; //TODO : chi mige?

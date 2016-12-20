@@ -3,7 +3,6 @@ package BusinessLogic;
 import DataAccess.*;
 
 import java.util.List;
-import java.util.Set;
 
 import static java.lang.Integer.parseInt;
 import static java.lang.Integer.valueOf;
@@ -50,10 +49,6 @@ public class BusinessLogic {
     }
 
     public static RealCustomer getRealCustomerBiz(Integer id) {
-     /*   RealCustomer realCustomer = new RealCustomer();
-        realCustomer.setCustomerNumber(parseInt(id));
-        List list = RealCustomerCRUD.search(realCustomer);
-        return (RealCustomer) list.get(0);*/
         return RealCustomerCRUD.getRealCustomer(id);
     }
 
@@ -65,17 +60,19 @@ public class BusinessLogic {
         return Customer.deleteCustomer(customerNumber);
     }
 
-    public static void addNewLoanType(LoanType loan) throws ConflictInDataException {
-//        LoanTypeCRUD.addNewRecord(loan);
-    }
-
     public static LoanType addLoanType(LoanType loan) throws ConflictInDataException {
         return LoanTypeCRUD.addNewRecord(loan);
     }
 
-    public static Integer addNewGrant(GrantCondition grant) throws ConflictInDataException {
-        //GrantCondition grantCondition= LoanTypeCRUD.addNewRecord(grant);
-        Integer id = 0;
-        return id;
+    public static List<LoanType> loadAllLoantTypes() {
+        return LoanTypeCRUD.loadAllLanTypes();
+    }
+
+    public static void addNewLoanFile(LoanFile loanFile) throws ConflictInDataException{
+        LoanFileCRUD.addNewLoanFile(loanFile);
+    }
+
+    public static void checkConditionAccurency(LoanFile loanFile) throws ConflictInDataException{
+        LoanTypeCRUD.checkConditionAccuracy(loanFile);
     }
 }

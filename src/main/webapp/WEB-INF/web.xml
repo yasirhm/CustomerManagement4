@@ -57,11 +57,37 @@
 
   <servlet>
     <servlet-name>AddLoanType</servlet-name>
-    <servlet-class>Presentation.Loan.CreateNewLoanTypePresentation</servlet-class>
+    <servlet-class>Presentation.Loan.LoanTypePresentation</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AddLoanType</servlet-name>
     <url-pattern>/AddNewLoanType</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>RetrieveCustomer</servlet-name>
+    <servlet-class>Presentation.Loan.LoanFilePresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RetrieveCustomer</servlet-name>
+    <url-pattern>/RetrieveCustomer</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>loadLoans</servlet-name>
+    <servlet-class>Presentation.Loan.LoanTypePresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loadLoans</servlet-name>
+    <url-pattern>/loadLoans</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>createLoanFile</servlet-name>
+    <servlet-class>Presentation.Loan.LoanFilePresentation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>createLoanFile</servlet-name>
+    <url-pattern>/createLoanFile</url-pattern>
+  </servlet-mapping>
 </web-app>
